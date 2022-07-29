@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.awt.print.Book;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -58,8 +59,23 @@ public class BookController {
 
     //删除书籍的请求
     @RequestMapping("/deleteBook/{booKID}")
-    public String DeletePaper(@PathVariable("booKID") int id){
+    public String deletePaper(@PathVariable("booKID") int id){
         bookService.deleteBookById(id);
         return "redirect:/book/allBook";
+    }
+
+    //查询书籍
+    @RequestMapping("/queryBook")
+    public String queryBook(String queryBookName,Model model){
+        Books books = bookService.queryBookByName(queryBookName);
+        List<Books> booksList = new ArrayList<Books>();
+        booksList.add(books);
+        if (books==null){
+            model.addAttribute("error","未查到");
+            booksList = bookService.queryAllBook();
+            return "allBook";
+        }
+        model.addAttribute("list",booksList);
+        return "allBook";
     }
 }

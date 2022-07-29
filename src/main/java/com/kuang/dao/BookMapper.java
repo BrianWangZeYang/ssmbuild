@@ -18,8 +18,10 @@ public interface BookMapper {
     int deleteBookById(int id);
     //更新一本书
     int updateBook(Books books);
-    //查询一本书
+    //通过id查询一本书
     Books queryBookById(int id);
     //查询全部书
     List<Books> queryAllBook();
+    //通过书籍名字查询一本书
+    Books queryBookByName(String name);
 }

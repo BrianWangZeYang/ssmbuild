@@ -34,4 +34,12 @@ public class MyTest {
         int i = bookServiceImpl.updateBook(books);
         System.out.println(i);
     }
+    @Test
+    public void test4(){
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        BookService bookServiceImpl = (BookService) context.getBean("BookServiceImpl");
+
+        Books books = bookServiceImpl.queryBookByName("Linux");
+        System.out.println(books);
+    }
 }

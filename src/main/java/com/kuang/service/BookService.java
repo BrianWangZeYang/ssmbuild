@@ -19,7 +19,7 @@ public interface BookService {
     //更新一本书
     int updateBook(Books books);
     //查询一本书
-    int queryBookById(int id);
+    Books queryBookById(int id);
     //查询全部书
     List<Books> queryAllBook();
 }

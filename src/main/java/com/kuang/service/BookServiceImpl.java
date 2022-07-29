@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService {
         return bookMapper.updateBook(books);
     }
 
-    public int queryBookById(int id) {
+    public Books queryBookById(int id) {
         return bookMapper.queryBookById(id);
     }
 
